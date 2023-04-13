@@ -15,11 +15,13 @@ header("Origin-Trial: AloWWxLa2bZsb8iGD5evH/znTjrQUBYKNu+F7u1zJLyD3RGbBsO1PPKy2B
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,400,300&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;500;700&display=swap" rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/sass/main.scss', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased min-h-screen flex flex-col bg-gray-100 mt-2">
+<body class="antialiased min-h-screen flex flex-col">
     @include('layouts.header')
     <main class="flex mt-4 mx-32">
 

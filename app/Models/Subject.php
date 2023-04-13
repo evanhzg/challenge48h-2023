@@ -13,6 +13,8 @@ class Subject extends Model
     protected $fillable = [
         'subject',
         'content',
+        'category',
+        'likes',
         'created_at',
         'updated_at',
     ];

@@ -14,6 +14,13 @@ module.exports = {
                 sans: ['unit', ...defaultTheme.fontFamily.sans],
             },
         },
+        colors: {
+            'customGray': '#393E41',
+            'customBlue': '#1602FD',
+            'customRed': '#FD0202',
+            'customGreen': '#02fd06',
+            'customOrange': '#fd7302',
+        }
     },
 
     plugins: [require('@tailwindcss/forms')],

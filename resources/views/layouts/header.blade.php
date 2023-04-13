@@ -1,13 +1,16 @@
-<header>
-    <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 z-100">
-        <!-- Primary Navigation Menu -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex">
-                    <!-- Logo -->
-                    <div class="shrink-0 flex items-center w-12">
-                        aaa
-                    </div>
-                </div>
-    </nav>
+<header class="bg-customGray flex items-center py-12 px-8">
+    <div class="flex w-full">
+        <!-- Logo -->
+        <div class="shrink-0 flex-1 items-center w-12">
+            logo
+        </div>
+        <x-card class="flex-auto bg-white">
+            <ul class="flex gap-4 text-xl w-full justify-between">
+                <li>Épicerie & courses</li>
+                <li>High-tech</li>
+                <li>Voyages</li>
+                <li>Divers</li>
+            </ul>
+        </x-card>
+    </div>
 </header>

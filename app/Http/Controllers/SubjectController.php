@@ -12,7 +12,7 @@ class SubjectController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::get();
+        $subjects = Subject::all();
         return view('admin.dashboard', compact('subjects'));
     }
 
@@ -24,6 +24,8 @@ class SubjectController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'content' => 'string|max:255',
+            'category' => 'string|max:255',
+            'likes' => 'integer',
         ]);
 
         if ($validator->fails()) {
@@ -34,6 +36,8 @@ class SubjectController extends Controller
         $subject = Subject::create([
             'subject' => $request->title,
             'content' => $request->content,
+            'category' => $request->category,
+            'likes' => $request->likes,
         ]);
 
         return redirect()->route('subject.index');
