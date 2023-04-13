@@ -1,17 +1,24 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 1 | @import "tailwindcss/base";
- *   |         ^^^^^^^^^^^^^^^^^^
- *   '
- *   main.scss 1:9  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import \"tailwindcss/base\";\a   \2502          ^^^^^^^^^^^^^^^^^^\a   \2575 \a   main.scss 1:9  root stylesheet";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, body {
+  margin: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  font-family: Lexend, sans-serif;
 }
+
+main {
+  flex: 1;
+}
+
+.btn__primary {
+  border: 1px solid black;
+  background-color: #FFFFFF;
+  padding: 1em 2em;
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: #1a202c;
+}
+
+/*# sourceMappingURL=main.css.map */
