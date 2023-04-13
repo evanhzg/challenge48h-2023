@@ -1,27 +1,22 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
-</head>
-<body>
-<form action="submit" method="POST">
-    <ul>
-        <li id="title" class="">
-            <label for="title">Titre</label>
-            <input type="text">
-        </li>
-        <li id="content" class="">
-            <label for="content">Article</label>
-            <input type="textearea">
-        </li>
-        <button type="submit">Publier</button>
-    </ul>
-</form>
+@extends('layouts.app')
 
+@section('content')
 
-</body>
-</html>
+<div class="flex flex-col w-full items-center justify-center gap-8">
+    <h2>Ajouter un sujet</h2>
+
+    <form action="submit" method="POST">
+        <ul class="flex flex-col gap-4">
+            <li id="title" class="flex flex-col gap-1">
+                <label for="title">Titre</label>
+                <input type="text">
+            </li>
+            <li id="title" class="flex flex-col gap-1">
+                <label for="content">Article</label>
+                <input type="text">
+            </li>
+            <button type="submit" class="btn__primary">Publier</button>
+        </ul>
+    </form>
+</div>
+@endsection

@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    margin: 0;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.btn__primary {
+    border: 1px solid black;
+    background-color: #FFFFFF;
+    padding: 1em 2em;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: #1a202c;
+}
