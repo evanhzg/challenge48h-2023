@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::any('/', function () {
     return view('welcome');
 });
+
+Route::get('/admin', function () {
+    return view('admin.dashboard');
+})->name('admin');
