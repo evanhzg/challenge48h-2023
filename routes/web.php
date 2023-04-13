@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,9 @@ Route::any('/', function () {
 Route::get('/admin', function () {
     return view('admin.dashboard');
 })->name('admin');
+
+Route::post('subjects', [SubjectController::class, 'index'])
+    ->name('subject.index');
+
+Route::post('subjects/create', [SubjectController::class, 'store'])
+    ->name('subject.create');
