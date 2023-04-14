@@ -30,7 +30,7 @@
     </div>
 
     <x-card class="flex flex-col justify-center items-center w-full py-14 gap-20 px-0 relative">
-        @if($subject->user_id === Auth::user()->id)
+        @if(Auth::user() and $subject->user_id === Auth::user()->id)
             <form method="POST" action="{{ route('subject.delete', $subject->id) }}">
                 @csrf
                 <input type="submit" class="absolute top-10 right-10 cursor-pointer delete-user text-red-600 underline" value="Supprimer">

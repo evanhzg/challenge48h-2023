@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::any('/', function () {
-    return view('web.pages.subjects.index');
-})->name('dashboard');
+Route::any('/', [SubjectController::class, 'index'])
+    ->name('dashboard');
 
 Route::get('subjects/{category}', [SubjectController::class, 'index'])
     ->name('subject.index');

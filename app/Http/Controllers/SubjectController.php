@@ -19,7 +19,7 @@ class SubjectController extends Controller
         else {
             $subjects = Subject::where('category', $cat)->get();
         }
-        return view('admin.dashboard', compact('subjects'));
+        return view('web.pages.subjects.index', compact('subjects'));
     }
 
     public function show($id)
