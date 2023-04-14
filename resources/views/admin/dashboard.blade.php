@@ -69,16 +69,11 @@
             <a href="{{ route('subject.show', $subject->id) }}" class="col-span-4">
                 <x-card class="flex flex-col gap-8 items-center justify-center relative">
                 <div class="absolute w-3 h-3 top-4 left-4 rounded-full {{ $subject->category == 'fun' ? 'bg-customBlue' : ($subject->category == 'food' ? 'bg-customRed' : ($subject->category == 'tech' ? 'bg-customGreen' : ($subject->category == 'trips' ? 'bg-customOrange' : 'bg-customGray')))}}"></div>
-                <form method="POST" action="{{ route('subject.delete', $subject->id) }}">
-                    @csrf
-                    <input type="submit" class="absolute top-4 right-4 cursor-pointer delete-user" value="x">
-
-                </form>
-                <h3>
+                <h3 class="text-2xl uppercase underline">
                     {{ $subject->subject }}
                 </h3>
-                <p>
-                    {{ $subject->content }}
+                <p class="italic text-gray-700 text-center">
+                    {{ Str::limit($subject->content, 50) }}
                 </p>
             </x-card>
             </a>
@@ -89,14 +84,3 @@
     @endif
 </div>
 @endsection
-
-<script>
-    deleteButton = document.querySelector('.delete-user')
-
-    deleteButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (confirm('Confirmer la suppression ?')) {
-            (e.target).closest('form').submit()
-        }
-    });
-</script>

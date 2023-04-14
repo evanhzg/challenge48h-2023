@@ -29,6 +29,9 @@ Route::get('subject/{id}', [SubjectController::class, 'show'])
 Route::post('subjects/create', [SubjectController::class, 'store'])
     ->name('subject.create');
 
+Route::post('subjects/comment/{subject}', [SubjectController::class, 'comment'])
+    ->name('subject.comment');
+
 Route::post('subjects/delete/{id}', [SubjectController::class, 'delete'])
     ->name('subject.delete');
 

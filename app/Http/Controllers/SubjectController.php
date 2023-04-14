@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,11 +25,12 @@ class SubjectController extends Controller
     public function show($id)
     {
         $subject = Subject::findOrFail($id);
-        return view('web.pages.subjects.show', compact('subject'));
+        $comments = Comment::where('subject_id', $id)->get();
+        return view('web.pages.subjects.show', compact(['subject', 'comments']));
     }
 
     public function create() {
-        return view('csubjects.index');
+        return view('subjects.index');
     }
 
     public function store(Request $request) {
@@ -49,6 +51,24 @@ class SubjectController extends Controller
             'content' => $request->inner_content,
             'category' => $request->category,
             'likes' => $request->likes,
+            'user_id' => $user->id,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function comment($subject, Request $request) {
+        $validator = Validator::make($request->all(), [
+            'comment' => 'required|string|max:255',
+        ]);
+        if ($validator->fails()) {
+
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $comment = Comment::create([
+            'comment' => $request->comment,
+            'subject_id' => $subject,
         ]);
 
         return redirect()->back();
@@ -64,6 +84,6 @@ class SubjectController extends Controller
         }
         Subject::findOrFail($id)->delete();
 
-        return redirect()->route('admin');
+        return redirect()->route('dashboard');
     }
 }
