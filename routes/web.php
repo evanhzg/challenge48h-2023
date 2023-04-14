@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::any('/', function () {
-    return view('welcome');
-});
-
-Route::get('/admin', function () {
     return view('admin.dashboard');
 })->name('admin');
 
@@ -27,3 +23,6 @@ Route::post('subjects', [SubjectController::class, 'index'])
 
 Route::post('subjects/create', [SubjectController::class, 'store'])
     ->name('subject.create');
+
+Route::post('subjects/delete/{id}', [SubjectController::class, 'delete'])
+    ->name('subject.delete');

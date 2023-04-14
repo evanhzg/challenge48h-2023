@@ -35,11 +35,24 @@ class SubjectController extends Controller
         $user = Auth::user();
         $subject = Subject::create([
             'subject' => $request->title,
-            'content' => $request->content,
+            'content' => $request->inner_content,
             'category' => $request->category,
             'likes' => $request->likes,
         ]);
 
-        return redirect()->route('subject.index');
+        return redirect()->back();
+    }
+
+    public function delete($id) {
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'required|integer'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        Subject::findOrFail($id)->delete();
+
+        return redirect()->route('admin');
     }
 }
