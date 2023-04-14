@@ -31,5 +31,8 @@ header("Origin-Trial: AloWWxLa2bZsb8iGD5evH/znTjrQUBYKNu+F7u1zJLyD3RGbBsO1PPKy2B
     <footer class="h-80 w-full bottom-0">
         <div>haha</div>
     </footer>
+
+    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+
 </body>
 </html>
