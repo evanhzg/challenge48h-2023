@@ -29,14 +29,16 @@
         </div>
     </div>
 
-    <x-card class="flex flex-col justify-center items-center w-full py-14 gap-20 px-0 relative">
+    <x-card class="flex flex-col justify-center items-center w-full gap-20 px-0 relative">
+        <div class="w-1/6 h-1 {{ $subject->category == 'fun' ? 'bg-customBlue' : ($subject->category == 'food' ? 'bg-customRed' : ($subject->category == 'tech' ? 'bg-customGreen' : ($subject->category == 'trips' ? 'bg-customOrange' : 'bg-customGray'))) }}"></div>
+
         @if(Auth::user() and $subject->user_id === Auth::user()->id)
             <form method="POST" action="{{ route('subject.delete', $subject->id) }}">
                 @csrf
                 <input type="submit" class="absolute top-10 right-10 cursor-pointer delete-user text-red-600 underline" value="Supprimer">
             </form>
         @endif
-        <section class="flex gap-20 w-full px-20">
+        <section class="flex gap-20 w-full px-20 ">
             <div class="flex flex-col gap-4 w-1/4">
                 <h1 class="text-4xl font-bold capitalize">{{ $subject->subject }}</h1>
                 <div class="flex gap-2">
@@ -66,9 +68,19 @@
         <div class="border border-gray-100 border-1 w-full"></div>
         <section class="flex flex-col items-center justify-center w-full gap-8 px-20">
             <h3 class="font-bold text-xl">Commentaires</h3>
-                @foreach($comments as $comment)
-                    <x-card class="w-full">
-                        <p>{{ $comment->comment }}</p>
+                @foreach($comments->sortByDesc('created_at') as $comment)
+                    <x-card class="w-full flex flex-col gap-1 relative">
+                        @if(Auth::user() and $comment->user_id === Auth::user()->id)
+                            <form method="POST" action="{{ route('comment.delete', $comment->id) }}">
+                                @csrf
+                                <input type="submit" class="absolute top-10 right-10 cursor-pointer delete-user text-red-600" value="x">
+                            </form>
+                        @endif
+                        <div class="w-full flex gap-4">
+                            <p>{{ $comment->created_at->format('H:i') }}</p>
+                            <p>{{ $comment->comment }}</p>
+                        </div>
+                        <p class="italic text-gray-600">{{ $comment->user->username }} - {{ $comment->created_at->format('d/m/Y') }}</p>
                     </x-card>
 
                 @endforeach

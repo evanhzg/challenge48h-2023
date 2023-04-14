@@ -66,14 +66,29 @@ class SubjectController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        $user = Auth::user();
+
         $comment = Comment::create([
             'comment' => $request->comment,
             'subject_id' => $subject,
+            'user_id' => $user->id,
         ]);
 
         return redirect()->back();
     }
 
+    public function commentDelete($id) {
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'required|integer'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        Comment::findOrFail($id)->delete();
+
+        return redirect()->back();
+    }
     public function delete($id) {
         $validator = Validator::make(['id' => $id], [
             'id' => 'required|integer'

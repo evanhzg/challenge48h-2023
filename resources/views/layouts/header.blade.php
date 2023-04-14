@@ -1,15 +1,15 @@
-<header class="bg-customGray flex items-center py-12 px-8">
+<header class="bg-gray-100 flex items-center py-12 px-8">
     <div class="flex w-full justify-center items-center">
         <!-- Logo -->
-        <div class="shrink-0 flex-1 items-center w-12">
-            logo
-        </div>
+        <a href="{{ route('dashboard') }}" class="shrink-0 flex-1 items-center w-12">
+            <img class="ml-20 w-24" src="{{ asset('img/coupon.png') }}" alt="Logo coupon">
+        </a>
         <x-card class="flex-auto bg-white">
             <ul class="flex gap-4 text-xl w-full justify-between">
-                <a href="{{ route('subject.index', 'food') }}">Alimentaire</a>
-                <a href="{{ route('subject.index', 'tech') }}">High-tech</a>
-                <a href="{{ route('subject.index', 'trips') }}">Voyages</a>
-                <a href="{{ route('subject.index', 'fun') }}">Loisirs</a>
+                <a class="pb-2 border-b border-customRed" href="{{ route('subject.index', 'food') }}">Alimentaire</a>
+                <a class="pb-2 border-b border-customGreen" href="{{ route('subject.index', 'tech') }}">High-tech</a>
+                <a class="pb-2 border-b border-customOrange" href="{{ route('subject.index', 'trips') }}">Voyages</a>
+                <a class="pb-2 border-b border-customBlue" href="{{ route('subject.index', 'fun') }}">Loisirs</a class="border-b-2 border-customBlue">
             </ul>
         </x-card>
         <x-card>

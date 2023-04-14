@@ -31,6 +31,10 @@ Route::post('subjects/create', [SubjectController::class, 'store'])
 Route::post('subjects/comment/{subject}', [SubjectController::class, 'comment'])
     ->name('subject.comment');
 
+
+Route::post('comment/delete/{id}', [SubjectController::class, 'commentDelete'])
+    ->name('comment.delete');
+
 Route::post('subjects/delete/{id}', [SubjectController::class, 'delete'])
     ->name('subject.delete');
 
