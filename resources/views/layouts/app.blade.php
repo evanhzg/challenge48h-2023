@@ -23,11 +23,11 @@ header("Origin-Trial: AloWWxLa2bZsb8iGD5evH/znTjrQUBYKNu+F7u1zJLyD3RGbBsO1PPKy2B
 </head>
 <body class="antialiased min-h-screen flex flex-col">
     @include('layouts.header')
-    <main class="flex mt-4 mx-32">
-
+    <main class="flex mt-4 mx-32 relative">
         @yield('content')
         @yield('js')
     </main>
+
     <footer class="h-80 w-full bottom-0">
         <div>haha</div>
     </footer>

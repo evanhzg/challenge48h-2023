@@ -1,16 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-@php($add = false)
 
-<div class="w-full flex flex-col items-center justify-center gap-32">
+<div class="w-full flex flex-col items-center justify-center gap-32 mt-48">
+    @if (Auth::user())
+        <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="fixed bg-white border border-black border-2 rounded-full w-24 h-24 absolute top-10 right-10 text-4xl" type="button">
+            +
+        </button>
 
-    <!-- Modal toggle -->
-    <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="fixed bg-[#F8FFF4] border border-black rounded-full w-24 h-24 absolute bottom-10 right-10 text-4xl" type="button">
-        +
-    </button>
-
-    <div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-2xl max-h-full">
             <div class="relative bg-white rounded-lg shadow">
                 <div class="flex items-start justify-between p-4 border-b rounded-t">
@@ -63,12 +61,12 @@
             </div>
         </div>
     </div>
-
-    <form action="{{ $add = true }}"></form>
+    @endif
     <x-card class="grid grid-cols-12 items-center justify-center gap-24 w-full py-12">
 
         @foreach(App\Models\Subject::all() as $subject)
-            <x-card class="col-span-4 flex flex-col gap-8 items-center justify-center relative">
+            <a href="{{ route('subject.show', $subject->id) }}" class="col-span-4">
+                <x-card class="flex flex-col gap-8 items-center justify-center relative">
                 <div class="absolute w-3 h-3 top-4 left-4 rounded-full {{ $subject->category == 'fun' ? 'bg-customBlue' : ($subject->category == 'food' ? 'bg-customRed' : ($subject->category == 'tech' ? 'bg-customGreen' : ($subject->category == 'trips' ? 'bg-customOrange' : 'bg-customGray')))}}"></div>
                 <form method="POST" action="{{ route('subject.delete', $subject->id) }}">
                     @csrf
@@ -82,6 +80,7 @@
                     {{ $subject->content }}
                 </p>
             </x-card>
+            </a>
         @endforeach
     </x-card>
 </div>

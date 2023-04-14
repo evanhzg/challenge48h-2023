@@ -16,6 +16,12 @@ class SubjectController extends Controller
         return view('admin.dashboard', compact('subjects'));
     }
 
+    public function show($id)
+    {
+        $subject = Subject::findOrFail($id);
+        return view('subjects.show', compact('subject'));
+    }
+
     public function create() {
         return view('web.pages.subjects.index');
     }

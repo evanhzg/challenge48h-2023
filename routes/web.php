@@ -23,6 +23,9 @@ Route::any('/', function () {
 Route::post('subjects', [SubjectController::class, 'index'])
     ->name('subject.index');
 
+Route::get('subject/{id}', [SubjectController::class, 'show'])
+    ->name('subject.show');
+
 Route::post('subjects/create', [SubjectController::class, 'store'])
     ->name('subject.create');
 
@@ -36,6 +39,9 @@ Route::get('login', [AuthenticatedSessionController::class, 'create'])
 Route::post('login', [AuthenticatedSessionController::class, 'store'])
     ->name('login.post');
 
+
+Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->name('logout');
 
 Route::get('register', [RegisteredUserController::class, 'create'])
     ->name('register');
