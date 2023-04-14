@@ -6,10 +6,10 @@
         </div>
         <x-card class="flex-auto bg-white">
             <ul class="flex gap-4 text-xl w-full justify-between">
-                <li>Épicerie & courses</li>
-                <li>High-tech</li>
-                <li>Voyages</li>
-                <li>Divers</li>
+                <a href="{{ route('subject.index', 'food') }}">Alimentaire</a>
+                <a href="{{ route('subject.index', 'tech') }}">High-tech</a>
+                <a href="{{ route('subject.index', 'trips') }}">Voyages</a>
+                <a href="{{ route('subject.index', 'fun') }}">Loisirs</a>
             </ul>
         </x-card>
         <x-card>

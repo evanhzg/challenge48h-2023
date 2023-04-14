@@ -10,20 +10,25 @@ use Illuminate\Support\Facades\Validator;
 
 class SubjectController extends Controller
 {
-    public function index()
+    public function index($cat=null)
     {
-        $subjects = Subject::all();
+        if(!$cat) {
+            $subjects = Subject::all();
+        }
+        else {
+            $subjects = Subject::where('category', $cat)->get();
+        }
         return view('admin.dashboard', compact('subjects'));
     }
 
     public function show($id)
     {
         $subject = Subject::findOrFail($id);
-        return view('subjects.show', compact('subject'));
+        return view('web.pages.subjects.show', compact('subject'));
     }
 
     public function create() {
-        return view('web.pages.subjects.index');
+        return view('csubjects.index');
     }
 
     public function store(Request $request) {

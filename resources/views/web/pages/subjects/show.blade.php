@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-fffff
+<h1>{{ $subject->subject }}</h1>
 
 @endsection

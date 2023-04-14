@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::any('/', function () {
-    return view('admin.dashboard');
-})->name('admin');
+    return view('web.pages.subjects.index');
+})->name('dashboard');
 
-Route::post('subjects', [SubjectController::class, 'index'])
+Route::get('subjects/{category}', [SubjectController::class, 'index'])
     ->name('subject.index');
 
 Route::get('subject/{id}', [SubjectController::class, 'show'])

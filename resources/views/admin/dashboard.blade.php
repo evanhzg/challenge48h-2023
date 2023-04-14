@@ -62,9 +62,10 @@
         </div>
     </div>
     @endif
-    <x-card class="grid grid-cols-12 items-center justify-center gap-24 w-full py-12">
+    @if(count($subjects) > 0)
+        <x-card class="grid grid-cols-12 items-center justify-center gap-24 w-full py-12">
 
-        @foreach(App\Models\Subject::all() as $subject)
+        @foreach($subjects as $subject)
             <a href="{{ route('subject.show', $subject->id) }}" class="col-span-4">
                 <x-card class="flex flex-col gap-8 items-center justify-center relative">
                 <div class="absolute w-3 h-3 top-4 left-4 rounded-full {{ $subject->category == 'fun' ? 'bg-customBlue' : ($subject->category == 'food' ? 'bg-customRed' : ($subject->category == 'tech' ? 'bg-customGreen' : ($subject->category == 'trips' ? 'bg-customOrange' : 'bg-customGray')))}}"></div>
@@ -83,6 +84,9 @@
             </a>
         @endforeach
     </x-card>
+    @else
+        <p class="italic">Aucun résultat.</p>
+    @endif
 </div>
 @endsection
 
